@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hunter Inventory System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h2>EZEKIEL'S INVENTORY SYSTEM</h2>
+
+  <!-- ADD SECTION -->
+  <div id="add-section" class="page">
+    <h3>ADD CATEGORY</h3>
+    <div class="row">
+      <input type="text" id="new-category" placeholder="e.g. De Lata">
+      <button onclick="addCategory()">ADD</button>
+    </div>
+
+    <h3>ADD ITEM</h3>
+    <div class="row">
+      <div class="custom-dropdown">
+        <input type="text" id="category-search" placeholder="Search or Select Category..." onkeyup="filterCategories()" onclick="filterCategories()">
+        <div id="category-list-dropdown" class="dropdown-content"></div>
+      </div>
+      <input type="hidden" id="category-select">
+    </div>
+
+    <div class="row">
+      <input type="text" id="new-item" placeholder="e.g. Century Tuna">
+    </div>
+
+    <h3>ADD PRICE</h3>
+    <div class="row">
+      <input type="number" id="price-required" placeholder="0.00 Price" step="0.01">
+      <input type="number" id="price-pcs" placeholder="0.00 / pcs optional" step="0.01">
+    </div>
+    <button class="full-btn" onclick="saveItem()">SAVE ITEM</button>
+    <p class="note">(/pcs is optional)</p>
+  </div>
+
+  <!-- INVENTORY SECTION -->
+  <div id="inventory-section" class="page hidden">
+    <div id="category-view">
+      <h3>CATEGORIES A-Z</h3>
+      <div class="inventory-wrapper">
+        <div id="category-list" class="category-scroll"></div>
+        <div id="alpha-index" class="alpha-index"></div>
+      </div>
+    </div>
+
+    <div id="item-view" class="hidden">
+      <div class="item-header">
+        <button onclick="backToCategories()">← BACK</button>
+        <h3 id="item-view-title">CATEGORY NAME</h3>
+        <div></div> <!-- spacer -->
+      </div>
+      <div class="inside-box-full">
+        <p><b>LIST OF ITEMS AND PRICE</b></p>
+        <p class="note">Click item to edit</p>
+        <div id="item-list"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="nav-menu">
+  <button class="nav-item active" id="nav-add" onclick="switchTab('add-section', this)">
+    <span>➕</span>ADD
+  </button>
+  <button class="nav-item" id="nav-inventory" onclick="switchTab('inventory-section', this)">
+    <span>📦</span>INVENTORY
+  </button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
